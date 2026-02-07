@@ -1,0 +1,525 @@
+/* 기본 설정 */
+:root {
+    --bg-color: #f8f8f8;
+    --text-color: #1a1a1a;
+    --sub-text: #999999;
+    --point-1: #0026ff;
+    --point-2: #e60000;
+    --section-bg: #ffffff;
+    --goudy-bg: #000000; /* 추천드린 깊은 블랙 */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Pretendard', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    position: fixed; top: 0; width: 100%;
+    padding: 40px 60px; display: flex; justify-content: space-between;
+    z-index: 1000; background-color: rgba(248, 248, 248, 0.8);
+    backdrop-filter: blur(10px);
+}
+.logo { font-weight: 900; font-size: 1.2rem; }
+
+.logo a {
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.7; /* 살짝 투명해지며 클릭 가능함을 암시 */
+}
+
+.nav a { 
+    color: inherit; text-decoration: none; margin-left: 40px; 
+    font-size: 0.9rem; font-weight: 700; transition: color 0.3s;
+}
+.nav a:hover { color: var(--point-1) !important; }
+
+/* Intro */
+.intro {
+    height: 100vh; display: flex; align-items: center;
+    padding: 0 10%; position: relative; overflow: hidden;
+}
+.intro-content { z-index: 2; flex: 1; transition: transform 0.1s linear, opacity 0.1s linear; }
+.intro-content h1 {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;
+    margin-bottom: 20px;
+}
+.description { font-size: 1.2rem; color: var(--sub-text); font-weight: 300; }
+
+.intro-image {
+    position: absolute; right: 0; bottom: 0;
+    width: 25%; height: auto; z-index: 1;
+    display: flex; justify-content: flex-end; align-items: flex-end;
+    transition: transform 0.1s linear, opacity 0.1s linear;
+}
+.intro-image img { width: 100%; height: auto; display: block; }
+
+/* Project Section (General) */
+.project-section {
+    position: sticky; top: 0; height: 100vh;
+    background-color: var(--section-bg); border-top: 1px solid #eee;
+    display: flex; flex-direction: column; overflow: hidden;
+}
+.project-info { padding: 120px 10% 40px; }
+.project-info h2 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; }
+.project-visual {
+    flex: 1; background-color: #f0f0f0; margin: 0 10% 80px;
+    border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* ---------------------------------------------------------
+   ***  Project_01   ***
+--------------------------------------------------------- */
+#goudy-archive {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 150px;
+    background-color: var(--goudy-bg); 
+    color: #ffffff; 
+    overflow: visible;
+    z-index: 10;
+}
+
+#goudy-archive .project-content {
+    height: auto;
+    display: block;
+}
+
+#goudy-archive .category {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+#goudy-archive .main-title {
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* 메인 서사 블록 레이아웃 */
+.narrative-block {
+    display: flex;
+    gap: 80px;
+    margin: 150px 10%;
+    align-items: center; /* 기본 중앙 정렬 */
+}
+
+.narrative-block.reverse { flex-direction: row-reverse; }
+.narrative-block.align-end { align-items: flex-end; }
+.narrative-block.align-start { align-items: flex-start; }
+
+/* 세로 스택 (변화구 레이아웃) */
+.narrative-block.vertical-stack {
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+}
+.narrative-block.vertical-stack .narrative-text { margin-bottom: 50px; }
+
+/* 이미지 및 텍스트 너비 유틸리티 (데스크탑) */
+.w-30 { width: 30%; }
+.w-35 { width: 35%; }
+.w-40 { width: 40%; }
+.w-50 { width: 50%; }
+.w-60 { width: 60%; }
+
+.narrative-image {
+    overflow: hidden;
+    background: #151515;
+}
+.narrative-image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.narrative-text p {
+    font-size: 0.95rem; /* 크기 축소 */
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left; /* 왼쪽 정렬 */
+    word-break: keep-all; /* 단어 단위 줄바꿈 */
+    overflow-wrap: break-word;
+}
+
+/* 가로 스크롤 전체 영역의 높이를 설정하여 스크롤 양을 조절합니다 */
+.horizontal-scroll-wrapper {
+    /* 1. 높이를 높여 스크롤 속도를 더 천천히 조절 (값이 클수록 느려짐) */
+    height: 1500vh; 
+    position: relative;
+    background-color: #000;
+    padding-top: 15vh; 
+    padding-bottom: 15vh;
+}
+
+/* 화면에 고정되어 이미지가 지나가게 만드는 컨테이너 */
+.sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center; /* 이미지들이 화면 중앙 높이에 오도록 배치 */
+    overflow: hidden;
+}
+
+/* 이미지들이 일렬로 배치되는 트랙 */
+.horizontal-track {
+    display: flex;
+    /* 2. 첫 이미지 시작 위치를 0으로 조정하여 왼쪽 끝 밀착 */
+    padding: 0 40vw 0 25vw; 
+    will-change: transform;
+    align-items: center;
+}
+
+/* 개별 이미지 아이템 */
+.scroll-item {
+    flex-shrink: 0;
+    /* 3. 이미지 너비를 화면에 꽉 차거나 적절하게 조정 */
+    height: 40vh;
+    /* 4. 이미지 사이 간격을 5vw에서 2vw로 대폭 축소 */
+    margin-right: 1vw; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+    /* 1. 브라우저의 렌더링 엔진이 이미지를 더 선명하게 그리도록 강제 */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges;
+    
+    /* 2. 하드웨어 가속을 활용하여 앤티앨리어싱(계단현상) 방지 */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 버튼 스타일 */
+.project-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* 버튼을 가로 중앙으로 배치 */
+    margin-top: 50px; /* 가로 스크롤 섹션과의 간격 */
+}
+
+#goudy-archive .btn-more {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    padding-bottom: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative; /* 밑줄 애니메이션을 위한 기준점 */
+    transition: color 0.3s ease;
+}
+
+/* 호버 시 나타날 밑줄의 초기 상태 */
+#goudy-archive .btn-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* 중앙에서 시작 */
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%); /* 중앙 정렬 유지 */
+}
+
+/* 호버 시 밑줄 확장 */
+#goudy-archive .btn-more:hover::after {
+    width: 100%;
+}
+
+#goudy-archive .btn-more:hover {
+    color: rgba(255, 255, 255, 0.7); /* 살짝 투명해지며 인지력 제공 */
+}
+
+/* ---------------------------------------------------------
+   반응형 및 공통 스타일
+--------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    .narrative-block, 
+    .narrative-block.reverse, 
+    .narrative-block.vertical-stack {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+        margin: 80px 5%;
+    }
+    
+    .w-30, .w-35, .w-40, .w-50, .w-60 { width: 100%; }
+    
+    .archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        margin: 100px 5%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ***  Project_02   ***
+--------------------------------------------------------- */
+
+/* After Event 전용 변수 */
+:root {
+    --after-event-bg: #121212; /* 추천드린 딥 차콜 */
+    --text-dim: rgba(255, 255, 255, 0.6);
+}
+
+/* 프로젝트 전체 배경 설정 */
+#after-event {
+    background-color: var(--after-event-bg);
+    height: auto; /* 내용에 따라 늘어나도록 설정 */
+    min-height: 200vh;
+    color: #ffffff;
+    z-index: 20; /* 이전 프로젝트보다 위에 오도록 설정 */
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+#after-event .project-intro-text {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+    font-weight: 300;
+}
+
+/* 뷰어 박스: 상하단 마스크 및 높이 설정 */
+.infinite-viewer {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* 화면의 대부분을 차지하는 거대한 창 */
+    margin-top: 50px;
+    overflow: hidden;
+    /* 상하단 블러 및 페이드 효과 */
+    mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%);
+}
+
+/* 그리드 벨트: 자동으로 위로 흐르는 애니메이션 */
+.grid-belt {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 무한 루프 애니메이션 정의 */
+@keyframes infiniteLoop {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); } /* 전체 높이의 절반(원본 세트)만큼 이동 */
+}
+
+/* 그리드 시스템: 정방형 유지 및 비정형 배치 */
+.deep-grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 100px; /* 사용자 요청: 더 넓은 간격 */
+    width: 70%;
+    margin: 0 auto;
+    padding: 150px 0;
+}
+
+.grid-item {
+    aspect-ratio: 1 / 1; /* 강제 정방형 유지 */
+    position: relative;
+    overflow: hidden;
+    background: #1a1a1a;
+    transition: transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%); /* 약간의 채도 저하로 분위기 통일 */
+    transition: filter 0.5s ease;
+}
+
+.grid-item:hover img {
+    filter: grayscale(0%);
+}
+
+/* 비정형 리듬감 부여 */
+.item-lg { grid-column: 2 / 7; } /* 큰 이미지 좌측 편향 */
+.item-sm { grid-column: 6 / 11; margin-top: 50px; } /* 작은 이미지 우측 하단 */
+.item-md { grid-column: 4 / 7; margin-top: -80px; } /* 중간 이미지 중앙 겹침 느낌 */
+
+.grid-quote {
+    grid-column: 2 / 12;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--point-1);
+    word-break: keep-all;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.quote-1 {
+    grid-column: 7 / 12; /* 이미지 옆으로 배치 */
+    font-size: 2rem;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.quote-2 {
+    grid-column: 2 / 6;
+    font-size: 1.4rem;
+    text-align: right;
+    align-self: flex-start;
+    margin-top: -100px; /* 위 이미지와 살짝 겹치는 느낌 */
+}
+
+.quote-3 {
+    grid-column: 1 / 13;
+    font-size: 2.2rem; /* 압도적인 크기로 '사건' 강조 */
+    text-align: center;
+    letter-spacing: -0.05em;
+    padding: 200px 0;
+}
+
+.quote-4 {
+    grid-column: 5 / 12; /* 우측 편향 배치 */
+    font-size: 2.2rem;
+    text-align: right;
+    align-self: center;
+    padding-right: 5vw;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.quote-5 {
+    grid-column: 2 / 8;
+    font-size: 1.8rem;
+    text-align: left;
+    margin-top: -50px; /* 위 이미지와 긴밀하게 연결 */
+    opacity: 0.9; /* 약간의 투명도로 '정적인 시작'의 느낌 부여 */
+}
+
+.quote-6 {
+    grid-column: 3 / 11; /* 중앙에 가깝지만 약간 비대칭 */
+    font-size: 3.2rem;
+    text-align: center;
+    padding: 250px 0; /* 마지막 문구로서 충분한 여백 확보 */
+    color: #ffffff; /* 마지막은 포인트 컬러 대신 화이트로 본질적 마무리 */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* 결론을 짓는 구분선 효과 */
+}
+
+.quote-4 + .grid-item { margin-top: 100px; }
+.quote-5 + .grid-item { margin-left: -5vw; }
+
+/* 피지컬 아카이브 섹션 */
+.physical-archive {
+    padding: 150px 10%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background-color: var(--after-event-bg); /* 배경색 명시 */
+}
+
+.archive-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.archive-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding-bottom: 50px;
+}
+
+/* 2. 가로 스크롤바 커스텀 디자인 (웹킷 브라우저 대상) */
+/* 스크롤바 전체 배경을 어둡게 만들어 튀지 않게 합니다. */
+.archive-slider::-webkit-scrollbar {
+    height: 8px; /* 스크롤바 두께를 아주 얇게 조절 */
+}
+
+/* 스크롤바 트랙(바탕) */
+.archive-slider::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); 
+    border-radius: 10px;
+}
+
+/* 스크롤바 핸들(움직이는 부분) */
+.archive-slider::-webkit-scrollbar-thumb {
+    background: var(--point-1); /* 포인트 컬러인 블루 적용 */
+    border-radius: 10px;
+}
+
+.archive-slider::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 38, 255, 0.8);
+}
+
+.archive-item {
+    flex: 0 0 600px;
+    height: 400px;
+}
+
+.archive-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* Contact & Footer */
+.contact-section {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; padding: 0 10%; background-color: var(--bg-color);
+}
+.contact-section h2 {
+    font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;
+    margin: 40px 0 80px; font-weight: 800;
+}
+.contact-details { display: flex; gap: 80px; }
+.detail-item { display: flex; flex-direction: column; gap: 15px; }
+.label { font-size: 0.8rem; color: var(--sub-text); text-transform: uppercase; font-weight: 700; }
+
+.link {
+    font-size: 1.5rem; color: var(--text-color); text-decoration: none;
+    position: relative; padding-bottom: 8px; font-weight: 600; transition: color 0.3s ease;
+}
+.link:hover { color: var(--point-1); }
+.link::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background-color: var(--point-1); transition: width 0.3s ease;
+}
+.link:hover::after { width: 100%; }
+
+@media screen and (max-width: 768px) {
+    .contact-details { flex-direction: column; gap: 40px; }
+    .link { font-size: 1.2rem; }
+    .header { padding: 20px; }
+    .nav a { margin-left: 20px; font-size: 0.8rem; }
+    .intro { flex-direction: column; justify-content: flex-start; padding-top: 120px; }
+    .intro-image { width: 50%; right: 0; bottom: 10%; opacity: 0.6; }
+    .project-info { padding: 80px 20px 20px; }
+    .project-visual { margin: 0 20px 40px; height: 40vh; }
+}
+
+.point-1 { color: var(--point-1); }
+.point-2 { color: var(--point-2); }
+html { scroll-behavior: smooth; }
