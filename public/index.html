@@ -196,6 +196,10 @@
 
     <script>
 
+        document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        }, false);
+
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
         };

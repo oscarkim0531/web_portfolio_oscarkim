@@ -378,6 +378,10 @@
             'y': { w: '201mm', h: '210mm' }
         };
 
+        document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        }, false);
+
         /**
          * [핵심 수식 변경] 
          * 뒷장이 앞으로 튀어나오는 문제를 해결하기 위해 
