@@ -1,4 +1,6 @@
-/* 기본 설정 */
+/* ---------------------------------------------------------
+   ***  All   ***
+--------------------------------------------------------- */
 :root {
     --bg-color: #f8f8f8;
     --text-color: #1a1a1a;
@@ -25,7 +27,23 @@ img {
   user-select: none; /* 텍스트 및 이미지 선택 방지 */
 }
 
-/* Header */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------
+   ***  Header   ***
+--------------------------------------------------------- */
 .header {
     position: fixed; top: 0; width: 100%;
     padding: 40px 60px; display: flex; justify-content: space-between;
@@ -48,7 +66,23 @@ img {
 }
 .nav a:hover { color: var(--point-1) !important; }
 
-/* Intro */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------
+   ***  Intro   ***
+--------------------------------------------------------- */
 .intro {
     height: 100vh; display: flex; align-items: center;
     padding: 0 10%; position: relative; overflow: hidden;
@@ -81,6 +115,20 @@ img {
     flex: 1; background-color: #f0f0f0; margin: 0 10% 80px;
     border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---------------------------------------------------------
    ***  Project_01   ***
@@ -275,6 +323,19 @@ img {
         margin: 100px 5%;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ---------------------------------------------------------
@@ -493,7 +554,94 @@ img {
     box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
-/* Contact & Footer */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------
+   ***  Archive   ***
+--------------------------------------------------------- */
+.archive-bridge {
+    height: 80vh; /* 몰입감을 위해 높은 높이 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 0 10%;
+    border-top: 1px solid #eee;
+}
+
+.bridge-sub {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--point-1);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.bridge-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+
+.bridge-description {
+    font-size: 1.1rem;
+    color: var(--sub-text);
+    line-height: 1.8;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+/* Archive 이동 버튼 - 강조형 */
+.btn-archive {
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: var(--text-color);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 0px; /* 이과적이고 정갈한 느낌을 위해 직각 유지 */
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.btn-archive:hover {
+    background-color: var(--point-1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 38, 255, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------
+   ***  Contact   ***
+--------------------------------------------------------- */
 .contact-section {
     height: 100vh; display: flex; flex-direction: column;
     justify-content: center; padding: 0 10%; background-color: var(--bg-color);
@@ -516,6 +664,76 @@ img {
     background-color: var(--point-1); transition: width 0.3s ease;
 }
 .link:hover::after { width: 100%; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------
+   ***  Footer   ***
+--------------------------------------------------------- */
+.footer {
+    width: 100%;
+    /* 바닥에서 충분히 띄우기 위해 상하 여백을 크게 줍니다 */
+    padding: 100px 0 60px 0; 
+    background-color: var(--bg-color); /* 혹은 섹션 배경색에 맞춰 조절 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.copyright-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 위아래 문구 사이의 간격 */
+}
+
+.copyright-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.4); /* 아주 연하게 처리 */
+    letter-spacing: 0.05em;
+}
+
+.copyright-sub {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.4); /* 보조 문구는 더 연하게 */
+    word-break: keep-all;
+}
+
+/* 다크모드 배경(프로젝트 섹션 등)에서도 잘 보이게 하려면 아래와 같이 추가 */
+#after-event .footer, #goudy-archive .footer {
+    background-color: transparent;
+}
+#after-event .copyright-text, #goudy-archive .copyright-text {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 768px) {
     .contact-details { flex-direction: column; gap: 40px; }
