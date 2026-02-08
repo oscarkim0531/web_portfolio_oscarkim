@@ -77,9 +77,9 @@
                         </div>
                     </section>
 
-                    <div class="horizontal-scroll-wrapper">
-                        <div class="sticky-container">
-                            <div class="horizontal-track">
+                    <div class="goudy-infinite-viewer">
+                        <div class="goudy-track">
+                            <div class="goudy-set">
                                 <div class="scroll-item"><img src="./Work_01/detailed-view_01.png" alt="Detail 1"></div>
                                 <div class="scroll-item"><img src="./Work_01/detailed-view_02.png" alt="Detail 2"></div>
                                 <div class="scroll-item"><img src="./Work_01/detailed-view_03.png" alt="Detail 3"></div>
@@ -186,7 +186,7 @@
                     포장되지 않은 디자인 기록을 통해 저의 성장 궤적을 공유합니다.
                 </p>
                 <div class="bridge-action">
-                    <a href="archive.html" class="btn-archive" target="_blank" rel="noopener noreferrer">
+                    <a href="./work-archive.html" class="btn-archive" target="_blank" rel="noopener noreferrer">
                         Explore Full Archive →
                     </a>
                 </div>
@@ -220,68 +220,75 @@
 
     <script>
 
-        document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        }, false);
+        /* ---------------------------------------------------------
+          [01. COMMON: 보안 및 초기화]
+          - 저작권 보호를 위한 우클릭 방지 및 브라우저 스크롤 동작 제어
+        --------------------------------------------------------- */
+        // 마우스 우클릭 금지 (이미지 보호)
+        document.addEventListener('contextmenu', (e) => e.preventDefault(), false);
 
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        };
+        // 페이지 새로고침 시 스크롤 위치 초기화
+        window.onbeforeunload = () => window.scrollTo(0, 0);
 
-        // 브라우저의 스크롤 복원 기능 비활성화 (가장 확실한 방법)
+        // 브라우저의 자동 스크롤 복원 비활성화 (스크롤 애니메이션 꼬임 방지)
         if (history.scrollRestoration) {
             history.scrollRestoration = 'manual';
         }
 
-        // 1. 전역 변수 초기화
-        let currentTranslate = 0;
-        let targetTranslate = 0;
 
-        window.addEventListener('scroll', () => {
-            // scrollY는 여기서 한 번만 선언합니다.
+
+
+
+        /* ---------------------------------------------------------
+          [02. INTRO: 메인 비주얼 애니메이션]
+          - 첫 화면에서 스크롤 시 텍스트와 캐릭터가 양옆으로 사라지는 효과
+        --------------------------------------------------------- */
+        const introAnimate = () => {
             const scrollY = window.scrollY;
             const vh = window.innerHeight;
             const isMobile = window.innerWidth <= 768;
-
-            // [로직 1] 인트로 애니메이션
+            
             const introContent = document.querySelector('.intro-content');
             const introImage = document.querySelector('.intro-image');
+
             if (introContent && scrollY <= vh) {
                 const progress = scrollY / vh;
+                // 텍스트는 왼쪽으로, 이미지는 오른쪽으로 이동하며 투명해짐
                 introContent.style.transform = `translateX(-${progress * 100}px)`;
                 introContent.style.opacity = 1 - (progress * 1.2);
+                
                 const imageMoveRange = isMobile ? 80 : 200; 
                 introImage.style.transform = `translateX(${progress * imageMoveRange}px)`;
                 introImage.style.opacity = 1 - (progress * 1.2);
             }
-
-            // [로직 2] 가로 스크롤 (Goudy Archive)
-            const horizontalWrapper = document.querySelector('.horizontal-scroll-wrapper');
-            const track = document.querySelector('.horizontal-track');
-            if (horizontalWrapper && track) {
-                const offsetTop = horizontalWrapper.offsetTop;
-                const wrapperHeight = horizontalWrapper.offsetHeight;
-                if (scrollY >= offsetTop && scrollY <= offsetTop + wrapperHeight - vh) {
-                    const progress = (scrollY - offsetTop) / (wrapperHeight - vh);
-                    const maxTranslate = track.scrollWidth - window.innerWidth;
-                    targetTranslate = -progress * maxTranslate;
-                }
-            }
-
-            // [로직 3] 섹션 스태킹 및 예외 처리
+        };
+        
+        
+        
+        
+        
+        /* ---------------------------------------------------------
+          [03. WORK: 섹션 스태킹 효과]
+          - 프로젝트 섹션들이 스크롤될 때 뒤로 쌓이며 작아지는 입체 효과
+        --------------------------------------------------------- */
+        const stackSections = () => {
+            const vh = window.innerHeight;
+            const isMobile = window.innerWidth <= 768;
             const sections = document.querySelectorAll('.project-section');
+
             sections.forEach((section) => {
                 const rect = section.getBoundingClientRect();
-                // After Event 섹션이 가려지지 않도록 예외 처리를 명확히 합니다.
-                if (section.id === 'goudy-archive' || 
-                    section.id === 'after-event' || 
-                    section.classList.contains('horizontal-scroll-wrapper')) {
+                
+                // 무한 루프가 포함된 섹션들은 스태킹 효과(작아짐)에서 제외하여 몰입도 유지
+                if (section.id === 'goudy-archive' || section.id === 'after-event') {
                     section.style.opacity = 1;
                     section.style.transform = `none`;
                     return; 
                 }
+
                 if (rect.top <= 0) {
                     const percentage = Math.abs(rect.top) / vh;
+                    // 상단에 닿으면 투명도와 크기를 줄여 뒤로 밀려나는 느낌 부여
                     section.style.opacity = 1 - (percentage * 0.4);
                     section.style.transform = `scale(${1 - (percentage * (isMobile ? 0.02 : 0.05))})`;
                 } else {
@@ -289,54 +296,94 @@
                     section.style.transform = `scale(1)`;
                 }
             });
+        };
 
-            // [로직 4] 패럴랙스 (필요 시 유지, 무한루프와 별개로 작동 가능)
-            const parallaxItems = document.querySelectorAll('.parallax');
-            parallaxItems.forEach(item => {
-                const speed = parseFloat(item.getAttribute('data-speed')) || 0.05;
-                const rect = item.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const shift = (window.innerHeight / 2 - rect.top) * speed;
-                    item.style.transform = `translateY(${shift}px)`;
-                }
+
+
+
+
+        /* ---------------------------------------------------------
+          [04. PROJECT 01: Goudy - 가로 무한 루프]
+          - 가로로 흐르는 이미지 트랙 자동 복제
+        --------------------------------------------------------- */
+        const initGoudyLoop = () => {
+            const goudyTrack = document.querySelector('.goudy-track');
+            const goudySet = document.querySelector('.goudy-set');
+
+            if (goudyTrack && goudySet) {
+                // 끊김 없는 루프를 위해 이미지 세트 복제
+                const clone = goudySet.cloneNode(true);
+                goudyTrack.appendChild(clone);
+            }
+        };
+        
+        
+        
+        
+        
+        /* ---------------------------------------------------------
+          [05. PROJECT 02: After Event - 세로 무한 루프 & 드래그]
+          - 수직으로 흐르는 그리드 벨트 및 포토북 드래그 인터랙션
+        --------------------------------------------------------- */
+        // 1. 수직 그리드 무한 루프 설정
+        const initVerticalLoop = () => {
+            const gridBelt = document.querySelector('.grid-belt');
+            const originalGrid = document.querySelector('.deep-grid-container');
+            
+            if (gridBelt && originalGrid) {
+                const clone = originalGrid.cloneNode(true);
+                gridBelt.appendChild(clone);
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // 화면에 보일 때만 애니메이션 실행 (리소스 절약)
+                        gridBelt.style.animation = entry.isIntersecting ? "infiniteLoop 150s linear infinite" : "none";
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(document.querySelector('.infinite-viewer'));
+            }
+        };
+
+        // 2. 포토북 리스트 드래그 스크롤
+        const initDragSlider = () => {
+            const slider = document.querySelector('.archive-slider');
+            if (!slider) return;
+
+            let isDown = false, startX, scrollLeft;
+            
+            slider.addEventListener('mousedown', (e) => { 
+                isDown = true; slider.classList.add('active'); 
+                startX = e.pageX - slider.offsetLeft; 
+                scrollLeft = slider.scrollLeft; 
             });
+            slider.addEventListener('mouseleave', () => isDown = false);
+            slider.addEventListener('mouseup', () => isDown = false);
+            slider.addEventListener('mousemove', (e) => { 
+                if (!isDown) return; 
+                e.preventDefault(); 
+                const x = e.pageX - slider.offsetLeft; 
+                slider.scrollLeft = scrollLeft - (x - startX) * 2; 
+            });
+        };
+        
+        
+        
+        
+        
+        /* ---------------------------------------------------------
+          [06. INITIALIZATION]
+          - 모든 기능을 통합하여 실행
+        --------------------------------------------------------- */
+        window.addEventListener('scroll', () => {
+            introAnimate();
+            stackSections();
         });
 
-        // [로직 5] 무한 루프 벨트 실행 (스크롤과 독립적)
-        const gridBelt = document.querySelector('.grid-belt');
-        const originalGrid = document.querySelector('.deep-grid-container');
-        if (gridBelt && originalGrid) {
-            const clone = originalGrid.cloneNode(true);
-            gridBelt.appendChild(clone);
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // 150s의 아주 느린 속도로 설정
-                    gridBelt.style.animation = entry.isIntersecting ? "infiniteLoop 150s linear infinite" : "none";
-                });
-            }, { threshold: 0.1 });
-            observer.observe(document.querySelector('.infinite-viewer'));
-        }
-
-        // [로직 6] 포토북 드래그 스크롤
-        const slider = document.querySelector('.archive-slider');
-        if (slider) {
-            let isDown = false, startX, scrollLeft;
-            slider.addEventListener('mousedown', e => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-            slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
-            slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
-            slider.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2; });
-        }
-
-        // [로직 7] 애니메이션 루프 실행
-        function animate() {
-            const track = document.querySelector('.horizontal-track');
-            if (track) {
-                currentTranslate += (targetTranslate - currentTranslate) * 0.1;
-                track.style.transform = `translateX(${currentTranslate}px)`;
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
+        window.addEventListener('load', () => {
+            initGoudyLoop();
+            initVerticalLoop();
+            initDragSlider();
+        });
     </script>
 </body>
 </html>

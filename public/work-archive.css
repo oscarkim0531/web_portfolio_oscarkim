@@ -1,0 +1,140 @@
+:root {
+    --bg-dark: #111111;
+    --sidebar-bg: #000000;
+    --point-blue: #0026ff;
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.4);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    display: flex; /* 사이드바와 메인을 가로로 배치 */
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- 좌측 사이드바 (Case Study 스타일 계승) --- */
+.archive-sidebar {
+    width: 280px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    padding: 60px 40px;
+    position: fixed; /* 고정 */
+    left: 0; top: 0;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.sidebar-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; margin-top: 40px; }
+.sidebar-desc { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; line-height: 1.6; }
+
+.back-home a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+.back-home a:hover { opacity: 1; }
+
+.filter-menu { list-style: none; margin-top: 60px; }
+.filter-menu li {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 0.05em;
+}
+.filter-menu li:hover, .filter-menu li.active { color: var(--text-main); }
+.copyright { font-size: 0.7rem; color: var(--text-dim); }
+
+/* --- 우측 메인 스테이지 --- */
+.archive-stage {
+    flex: 1;
+    margin-left: 280px; /* 사이드바 너비만큼 확보 */
+    padding: 100px 5%;
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
+    gap: 50px 25px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* --- 프로젝트 카드 디자인 --- */
+.project-card {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.thumb-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 4:3 비율 고정 */
+    background-color: #222;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.thumb-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* 호버 시 줌 및 텍스트 나타남 */
+.card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 38, 255, 0.2);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.view-text {
+    font-size: 0.75rem; font-weight: 700; color: #fff;
+    border: 1px solid #fff; padding: 8px 15px;
+}
+
+.project-card:hover img { transform: scale(1.08); filter: brightness(1); }
+.project-card:hover .card-overlay { opacity: 1; }
+
+.card-info .meta { display: flex; gap: 10px; margin-bottom: 8px; }
+.year, .type { font-size: 0.7rem; color: var(--text-dim); font-weight: 600; letter-spacing: 0.05em; }
+.title { font-size: 1rem; font-weight: 700; line-height: 1.4; color: var(--text-main); }
+
+/* --- 반응형 레이아웃 --- */
+@media screen and (max-width: 1600px) { .archive-grid { grid-template-columns: repeat(3, 1fr); } }
+@media screen and (max-width: 1100px) { .archive-grid { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 768px) {
+    body { flex-direction: column; }
+    .archive-sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; }
+    .archive-stage { margin-left: 0; padding: 60px 20px; }
+    .archive-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 480px) { .archive-grid { grid-template-columns: 1fr; } }
+
+/* --- 페이지네이션 --- */
+.pagination-container { margin-top: 100px; display: flex; justify-content: center; }
+.pagination { display: flex; gap: 15px; align-items: center; }
+.page-btn {
+    background: none; border: none; color: var(--text-dim);
+    font-size: 0.8rem; font-weight: 700; cursor: pointer; padding: 10px;
+    transition: 0.3s;
+}
+.page-btn.active, .page-btn:hover { color: var(--text-main); }

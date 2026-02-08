@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Oscar Kim</title>
+    <link rel="stylesheet" href="./work-archive.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+</head>
+<body class="archive-body">
+
+    <nav class="archive-sidebar">
+        <div class="sidebar-top">
+            <div class="back-home">
+                <a href="./index.html#archive-bridge">← Back to Portfolio</a>
+            </div>
+            <h1 class="sidebar-title">WORK<br>ARCHIVE</h1>
+            <p class="sidebar-desc">2024 — 2026<br>Design Log</p>
+        </div>
+        
+        <ul class="filter-menu">
+            <li class="active" data-filter="all">ALL WORKS</li>
+            <li data-filter="typography">TYPOGRAPHY</li>
+            <li data-filter="branding">BRANDING</li>
+            <li data-filter="photography">PHOTOGRAPHY</li>
+            <li data-filter="motion">MOTION</li>
+        </ul>
+
+        <div class="sidebar-bottom">
+            <p class="copyright">© 2026 Oscar Kim</p>
+        </div>
+    </nav>
+
+    <main class="archive-stage">
+        <div class="archive-grid" id="archiveGrid">
+            
+            <article class="project-card" data-category="typography">
+                <div class="thumb-wrapper">
+                    <img src="./assets/archive/thumb_01.jpg" alt="Work 01">
+                    <div class="card-overlay">
+                        <span class="view-text">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="meta">
+                        <span class="year">2024</span>
+                        <span class="type">SCHOOL WORK</span>
+                    </div>
+                    <h2 class="title">Goudy Old Style Specimen</h2>
+                </div>
+            </article>
+
+            <article class="project-card" data-category="photography">
+                <div class="thumb-wrapper">
+                    <img src="./assets/archive/thumb_02.jpg" alt="Work 02">
+                    <div class="card-overlay">
+                        <span class="view-text">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="meta">
+                        <span class="year">2025</span>
+                        <span class="type">PERSONAL</span>
+                    </div>
+                    <h2 class="title">After Event: Purity</h2>
+                </div>
+            </article>
+
+        </div>
+
+        <nav class="pagination-container">
+            <div class="pagination">
+                <button class="page-btn active">01</button>
+                <button class="page-btn">02</button>
+                <span class="dots">...</span>
+                <button class="page-btn">NEXT</button>
+            </div>
+        </nav>
+    </main>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('archiveGrid');
+            const cards = Array.from(grid.children);
+            
+            // [최신순 정렬 로직] 코드 아래쪽 작업을 가장 위로
+            grid.innerHTML = '';
+            cards.reverse().forEach(card => grid.appendChild(card));
+
+            // 우클릭 금지 유지
+            document.addEventListener('contextmenu', e => e.preventDefault());
+
+            // 필터 인터랙션 (시각적 효과만 구현)
+            const filters = document.querySelectorAll('.filter-menu li');
+            filters.forEach(f => {
+                f.addEventListener('click', () => {
+                    filters.forEach(li => li.classList.remove('active'));
+                    f.classList.add('active');
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

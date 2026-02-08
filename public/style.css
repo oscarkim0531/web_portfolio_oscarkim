@@ -217,59 +217,44 @@ img {
     overflow-wrap: break-word;
 }
 
-/* 가로 스크롤 전체 영역의 높이를 설정하여 스크롤 양을 조절합니다 */
-.horizontal-scroll-wrapper {
-    /* 1. 높이를 높여 스크롤 속도를 더 천천히 조절 (값이 클수록 느려짐) */
-    height: 1500vh; 
-    position: relative;
-    background-color: #000;
-    padding-top: 15vh; 
-    padding-bottom: 15vh;
-}
-
-/* 화면에 고정되어 이미지가 지나가게 만드는 컨테이너 */
-.sticky-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center; /* 이미지들이 화면 중앙 높이에 오도록 배치 */
+.goudy-infinite-viewer {
+    width: 100%;
     overflow: hidden;
+    padding: 60px 0;
+    background-color: #000;
 }
 
-/* 이미지들이 일렬로 배치되는 트랙 */
-.horizontal-track {
+.goudy-track {
     display: flex;
-    /* 2. 첫 이미지 시작 위치를 0으로 조정하여 왼쪽 끝 밀착 */
-    padding: 0 40vw 0 25vw; 
-    will-change: transform;
-    align-items: center;
+    width: max-content;
+    animation: horizontalLoop 50s linear infinite; /* 속도가 너무 빠르면 60s로 늘리세요 */
 }
 
-/* 개별 이미지 아이템 */
-.scroll-item {
-    flex-shrink: 0;
-    /* 3. 이미지 너비를 화면에 꽉 차거나 적절하게 조정 */
-    height: 40vh;
-    /* 4. 이미지 사이 간격을 5vw에서 2vw로 대폭 축소 */
-    margin-right: 1vw; 
+.goudy-set {
     display: flex;
-    justify-content: center;
+    gap: 15px; /* 이미지 사이 간격 */
+    padding-right: 15px;
+}
+
+.goudy-set .scroll-item {
+    flex-shrink: 0; /* 크기 줄어듦 방지 */
+    height: 280px;  /* 이미지 높이 통일 (기존 180px에서 키움) */
+    width: auto;    /* 높이에 맞춰 너비가 자동 조절되도록 설정 */
+    display: flex;
     align-items: center;
 }
 
 .scroll-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    
-    /* 1. 브라우저의 렌더링 엔진이 이미지를 더 선명하게 그리도록 강제 */
-    image-rendering: -webkit-optimize-contrast; 
-    image-rendering: crisp-edges;
-    
-    /* 2. 하드웨어 가속을 활용하여 앤티앨리어싱(계단현상) 방지 */
-    transform: translateZ(0);
-    backface-visibility: hidden;
+    height: 100%;   /* 부모(.scroll-item)의 높이에 맞춤 */
+    width: auto;    /* 원본 비율 유지 */
+    display: block;
+    object-fit: contain; /* 안전장치 */
+}
+
+/* 무한 루프 핵심 애니메이션 */
+@keyframes horizontalLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* 세트가 두 개이므로 절반 지점에서 초기화 */
 }
 
 /* 버튼 스타일 */
@@ -402,6 +387,10 @@ img {
 .grid-belt {
     display: flex;
     flex-direction: column;
+}
+
+.grid-belt, .goudy-track {
+    will-change: transform; /* 브라우저에게 애니메이션 예고 */
 }
 
 /* 무한 루프 애니메이션 정의 */
