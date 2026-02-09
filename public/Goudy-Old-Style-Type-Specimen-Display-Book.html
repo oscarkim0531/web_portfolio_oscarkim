@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goudy Old Style Archive | Oscar Kim</title>
-    <link rel="stylesheet" href="./Goudy-Old-Style-Type-specimen-Display-Book.css" type="text/css" media="all">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-    <meta name="description" content="Visual Designer 'Oscar Kim' Web Portfolio">
-    <meta name="author" content="OscarKim">
-    <link rel="shortcut icon" href="./Favicon_OscarKim.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 </head>
 <body>
 
+    <div class="fixed-bg-text" id="bg-text">G</div>
+
     <main id="archive-root">
-        <section class="section-overview">
+        <section class="section-overview" data-letter="G">
             <div class="content-wrapper">
                 <h1 class="project-title">Goudy Old Style<br>Typeface Specimen Display Book</h1>
                 <p class="description-text">
@@ -25,26 +24,19 @@
             </div>
         </section>
 
-        <section class="section-video" id="project-film">
+        <section class="section-video" data-letter="V">
             <div class="content-wrapper">
                 <span class="step-label">00 / Video</span>
                 <h2 class="book-title">Book_Video</h2>
                 <div class="video-container">
-                    <video 
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline 
-                        poster="./work-archive/video-thumbnail.jpg" 
-                        class="archive-video">
+                    <video autoplay muted loop playsinline poster="./work-archive/video-thumbnail.jpg" class="archive-video">
                         <source src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Goudy-Old-Style_Book_Video.mp4" type="video/mp4">
-                        해당 브라우저는 비디오 태그를 지원하지 않습니다.
                     </video>
                 </div>
             </div>
         </section>
 
-        <section class="section-book" id="g-book">
+        <section class="section-book" id="g-book" data-letter="G">
             <div class="content-wrapper">
                 <span class="step-label">01 / GENESIS</span>
                 <h2 class="book-title">G Book</h2>
@@ -53,49 +45,38 @@
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/G_Book_1.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            G Book은 Goudy Old Style의 기초적인 조형 구조와 시각적 보정 원리를 분석하는 것으로부터 시작합니다. 4단 브로셔 형식의 내부 면에는 x-height, 어센더(Ascender), 디센더(Descender) 등 서체의 골격을 결정짓는 주요 수치들과 이를 보완하기 위한 시각적 장치들을 상세히 기록했습니다. 특히 각 글자의 획이 만나는 지점에서 발생하는 착시를 제어하는 방식과 서체 고유의 용어들을 그래픽 요소와 결합하여 직관적으로 전달하고자 했습니다. 이는 서체의 외형을 넘어 그 이면의 설계 원리를 이해하는 첫 단계로서 중요한 기초가 됩니다.
-                        </p>
+                        <p>G Book은 Goudy Old Style의 기초적인 조형 구조와 시각적 보정 원리를 분석하는 것으로부터 시작합니다. 4단 브로셔 형식의 내부 면에는 x-height, 어센더(Ascender), 디센더(Descender) 등 서체의 골격을 결정짓는 주요 수치들과 이를 보완하기 위한 시각적 장치들을 상세히 기록했습니다. 특히 각 글자의 획이 만나는 지점에서 발생하는 착시를 제어하는 방식과 서체 고유의 용어들을 그래픽 요소와 결합하여 직관적으로 전달하고자 했습니다. 이는 서체의 외형을 넘어 그 이면의 설계 원리를 이해하는 첫 단계로서 중요한 기초가 됩니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-book" id="o-book">
+        <section class="section-book" id="o-book" data-letter="O">
             <div class="content-wrapper">
                 <span class="step-label">02 / ORIGIN</span>
                 <h2 class="book-title">O Book</h2>
-                <div class="display-grid reverse">
-                    <div class="image-area">
+                <div class="display-grid">
+                    <div class="image-group count-1">
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/O_Book_1.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            서체의 뿌리를 추적하는 O Book의 도입부에서는 프레데릭 가우디의 초상과 함께 그가 추구했던 디자인 철학을 조명합니다. 르네상스 시기 인문주의 서체의 영향을 받은 Goudy Old Style이 탄생하게 된 역사적 배경과 개발 과정을 'Development & History' 섹션에 상세히 담았습니다. 이를 통해 이 서체가 단순히 과거의 복제가 아닌, 고전의 생명력을 현대적인 인쇄 환경에 맞게 재해석한 결과물임을 강조했습니다.
-                        </p>
+                        <p>서체의 뿌리를 추적하는 O Book의 도입부에서는 프레데릭 가우디의 초상과 함께 그가 추구했던 디자인 철학을 조명합니다. 르네상스 시기 인문주의 서체의 영향을 받은 Goudy Old Style이 탄생하게 된 역사적 배경과 개발 과정을 'Development & History' 섹션에 상세히 담았습니다. 이를 통해 이 서체가 단순히 과거의 복제가 아닌, 고전의 생명력을 현대적인 인쇄 환경에 맞게 재해석한 결과물임을 강조했습니다.</p>
                     </div>
-
-                    <div class="image-area">
+                    <div class="image-group count-2">
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/O_Book_2.png"></div>
-                    </div>
-                    <div class="image-area">
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/O_Book_3.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            문자의 크기 변화가 독자의 인상에 미치는 영향을 탐구하기 위해, 네 가지 서체 패밀리를 크기별로 배열하여 시각적 대비를 실험했습니다. 'Impression that depends on the size of the letter' 페이지에서는 서체의 크기가 작아짐에 따라 유지되어야 할 가독성과, 커졌을 때 드러나는 조형적 디테일의 조화를 실제 크기로 확인할 수 있도록 구성했습니다. 이는 디자이너가 매체에 적합한 서체 크기를 선택할 때 직관적인 기준을 가질 수 있도록 돕는 실무적인 지표가 됩니다.
-                        </p>
+                        <p>문자의 크기 변화가 독자의 인상에 미치는 영향을 탐구하기 위해, 네 가지 서체 패밀리를 크기별로 배열하여 시각적 대비를 실험했습니다. 'Impression that depends on the size of the letter' 페이지에서는 서체의 크기가 작아짐에 따라 유지되어야 할 가독성과, 커졌을 때 드러나는 조형적 디테일의 조화를 실제 크기로 확인할 수 있도록 구성했습니다. 이는 디자이너가 매체에 적합한 서체 크기를 선택할 때 직관적인 기준을 가질 수 있도록 돕는 실무적인 지표가 됩니다.</p>
                     </div>
                     <div class="text-area">
-                        <p>
-                            마지막 섹션에서는 Goudy Old Style Regular 서체를 기준으로 글자 사이(자간)와 글줄 사이(행간)의 변화가 텍스트 블록의 질감에 어떠한 영향을 주는지 분석했습니다. 미세한 간격의 차이가 가독성을 넘어 지면 전체의 정서와 리듬감을 어떻게 변화시키는지를 시각화했습니다. 이러한 분석은 서체를 단순히 개별적인 문자로 보는 것이 아니라, 지면을 채우는 하나의 유기적인 흐름으로 인식하게 하는 과정입니다.
-                        </p>
+                        <p>마지막 섹션에서는 Goudy Old Style Regular 서체를 기준으로 글자 사이(자간)와 글줄 사이(행간)의 변화가 텍스트 블록의 질감에 어떠한 영향을 주는지 분석했습니다. 미세한 간격의 차이가 가독성을 넘어 지면 전체의 정서와 리듬감을 어떻게 변화시키는지를 시각화했습니다. 이러한 분석은 서체를 단순히 개별적인 문자로 보는 것이 아니라, 지면을 채우는 하나의 유기적인 흐름으로 인식하게 하는 과정입니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-book" id="u-book">
+        <section class="section-book" id="u-book" data-letter="U">
             <div class="content-wrapper">
                 <span class="step-label">03 / UNCOVER</span>
                 <h2 class="book-title">U Book</h2>
@@ -104,120 +85,85 @@
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/U_Book_1.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            U Book은 서체를 온전히 내재화하기 위해 모눈종이 위에 직접 글자를 그리며 분석한 '톺아보기' 활동의 정제된 기록입니다. 직관에만 의존하지 않고 각 글자의 비례와 곡률을 세밀하게 측정하여 도출한 데이터들을 바탕으로 서체의 조형적 법칙을 재구성했습니다. 이러한 실험적인 과정은 서체가 가진 미세한 특징들을 직접 발견하고 논리적인 근거를 마련하는 핵심적인 과정이 되었습니다. 수많은 스케치와 측정 데이터를 체계적으로 정리하여 서체에 대한 깊은 이해도를 시각적으로 표현했습니다.
-                        </p>
+                        <p>U Book은 서체를 온전히 내재화하기 위해 모눈종이 위에 직접 글자를 그리며 분석한 '톺아보기' 활동의 정제된 기록입니다. 직관에만 의존하지 않고 각 글자의 비례와 곡률을 세밀하게 측정하여 도출한 데이터들을 바탕으로 서체의 조형적 법칙을 재구성했습니다. 이러한 실험적인 과정은 서체가 가진 미세한 특징들을 직접 발견하고 논리적인 근거를 마련하는 핵심적인 과정이 되었습니다. 수많은 스케치와 측정 데이터를 체계적으로 정리하여 서체에 대한 깊은 이해도를 시각적으로 표현했습니다.</p>
                     </div>
-
                     <div class="image-area">
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/U_Book_2.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            소문자 b, d, p, q는 언뜻 보기에 반전이나 뒤집기를 통해 형태를 공유하는 것처럼 보이지만, Goudy Old Style에서는 각 문자마다 독립적인 고유성을 지니고 있습니다. 예를 들어 b와 p의 곡선이 만나는 지점의 미묘한 각도 차이나, d와 q에서 드러나는 어센더와 디센더의 비대칭적 조형은 각 글자를 명확하게 구분 짓는 요소가 됩니다. 이러한 고유의 특징들은 문장의 가독성을 높이는 동시에 Goudy Old Style 특유의 따뜻하고 인간적인 인상을 형성하는 결정적인 근거가 됩니다. 단순히 대칭적인 복제가 아닌, 각 글자가 가진 독립적인 완결성을 탐구함으로써 서체의 섬세한 디자인 의도를 분석했습니다.
-                        </p>
+                        <p>소문자 b, d, p, q는 언뜻 보기에 반전이나 뒤집기를 통해 형태를 공유하는 것처럼 보이지만, Goudy Old Style에서는 각 문자마다 독립적인 고유성을 지니고 있습니다. 예를 들어 b와 p의 곡선이 만나는 지점의 미묘한 각도 차이나, d와 q에서 드러나는 어센더와 디센더의 비대칭적 조형은 각 글자를 명확하게 구분 짓는 요소가 됩니다. 이러한 고유의 특징들은 문장의 가독성을 높이는 동시에 Goudy Old Style 특유의 따뜻하고 인간적인 인상을 형성하는 결정적인 근거가 됩니다. 단순히 대칭적인 복제가 아닌, 각 글자가 가진 독립적인 완결성을 탐구함으로써 서체의 섬세한 디자인 의도를 분석했습니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-book" id="d-book">
+        <section class="section-book" id="d-book" data-letter="D">
             <div class="content-wrapper">
                 <span class="step-label">04 / DISTINCTION</span>
                 <h2 class="book-title">D Book</h2>
-                <div class="display-grid reverse">
+                <div class="display-grid">
                     <div class="image-area">
                         <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_1.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            D Book에서는 Goudy Old Style과 조형적 계보를 공유하는 Garamond 및 Sabon 서체와의 비교 분석을 진행했습니다. 세 서체 모두 인문주의적 전통에 뿌리를 두고 있지만, 획의 대비와 세리프의 마감 방식 등에서 각기 다른 시대적 해석과 기술적 차이를 보여줍니다. 가라몬드의 우아한 비례와 사봉의 현대적 균형감을 가우디 올드 스타일과 병치함으로써, 각 서체가 지닌 독창적인 성격을 더욱 명확히 드러내고자 했습니다. 이러한 비교는 특정 디자인 맥락에서 왜 Goudy Old Style이 최선의 선택이 될 수 있는지를 논리적으로 증명하는 과정입니다.
-                        </p>
+                        <p>D Book에서는 Goudy Old Style과 조형적 계보를 공유하는 Garamond 및 Sabon 서체와의 비교 분석을 진행했습니다. 세 서체 모두 인문주의적 전통에 뿌리를 두고 있지만, 획의 대비와 세리프의 마감 방식 등에서 각기 다른 시대적 해석과 기술적 차이를 보여줍니다. 가라몬드의 우아한 비례와 사봉의 현대적 균형감을 가우디 올드 스타일과 병치함으로써, 각 서체가 지닌 독창적인 성격을 더욱 명확히 드러내고자 했습니다. 이러한 비교는 특정 디자인 맥락에서 왜 Goudy Old Style이 최선의 선택이 될 수 있는지를 논리적으로 증명하는 과정입니다.</p>
                     </div>
-
                     <div class="image-gallery">
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_2.png"></div>
-                        </div>
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_3.png"></div>
-                        </div>
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_4.png"></div>
-                        </div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_2.png"></div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_3.png"></div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/D_Book_4.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            대문자 M을 비롯한 주요 글자들의 비교 페이지에서는 각 서체의 골격적 차이를 극명하게 대조했습니다. Goudy Old Style의 M은 획이 교차하는 지점의 각도와 세리프의 하중 분산 방식에서 특유의 고전적인 무게감을 유지하고 있음을 확인할 수 있었습니다. 특히 타 서체와 비교했을 때 두드러지는 어깨(Shoulder)의 곡률과 획의 굵기 변화는 이 서체만이 가진 조형적 완결성을 보여주는 대표적인 사례입니다. 이처럼 구체적인 조형 비교를 통해 서체 간의 미세한 차이가 전체 레이아웃의 인상을 어떻게 결정짓는지 기록했습니다.
-                        </p>
+                        <p>대문자 M을 비롯한 주요 글자들의 비교 페이지에서는 각 서체의 골격적 차이를 극명하게 대조했습니다. Goudy Old Style의 M은 획이 교차하는 지점의 각도와 세리프의 하중 분산 방식에서 특유의 고전적인 무게감을 유지하고 있음을 확인할 수 있었습니다. 특히 타 서체와 비교했을 때 두드러지는 어깨(Shoulder)의 곡률과 획의 굵기 변화는 이 서체만이 가진 조형적 완결성을 보여주는 대표적인 사례입니다. 이처럼 구체적인 조형 비교를 통해 서체 간의 미세한 차이가 전체 레이아웃의 인상을 어떻게 결정짓는지 기록했습니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-book" id="y-book">
+        <section class="section-book" id="y-book" data-letter="Y">
             <div class="content-wrapper">
                 <span class="step-label">05 / YIELD</span>
                 <h2 class="book-title">Y Book</h2>
                 <div class="display-grid">
                     <div class="image-gallery">
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_1.png"></div>
-                        </div>
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_2.png"></div>
-                        </div>
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_3.png"></div>
-                        </div>
-                        <div class="image-area">
-                            <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_4.png"></div>
-                        </div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_1.png"></div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_2.png"></div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_3.png"></div>
+                        <div class="image-placeholder"><img src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Y_Book_4.png"></div>
                     </div>
                     <div class="text-area">
-                        <p>
-                            Y Book은 앞선 분석과 탐구의 과정에서 파생된 모든 소스들을 집약한 아카이빙 결과물입니다. U Book의 토대가 된 모눈종이 톺아보기 스케치와 원본 데이터들을 스캔하여 원형의 기록을 보존하고, 이를 디자인적 관점에서 재구성하여 담았습니다. 결과물로서의 서체뿐만 아니라, 그것을 분석하고 이해하기 위해 거쳐온 집요한 과정의 흔적들을 담백하게 보여주는 책입니다.
-                        </p>
+                        <p>Y Book은 앞선 분석과 탐구의 과정에서 파생된 모든 소스들을 집약한 아카이빙 결과물입니다. U Book의 토대가 된 모눈종이 톺아보기 스케치와 원본 데이터들을 스캔하여 원형의 기록을 보존하고, 이를 디자인적 관점에서 재구성하여 담았습니다. 결과물로서의 서체뿐만 아니라, 그것을 분석하고 이해하기 위해 거쳐온 집요한 과정의 흔적들을 담백하게 보여주는 책입니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-video" id="project-film">
+        <section class="section-video" data-letter="M">
             <div class="content-wrapper">
                 <span class="step-label">06 / ARCHIVE FILM</span>
                 <h2 class="book-title">Motion Video</h2>
                 <div class="video-container">
-                    <video 
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline 
-                        poster="./work-archive/video-thumbnail.jpg" 
-                        class="archive-video">
+                    <video autoplay muted loop playsinline class="archive-video">
                         <source src="./work-archive/2025-01_typography(2)_Goudy-Old-Style_Type-Specimen-Book/Goudy-Old-Style_Motion_Video.mp4" type="video/mp4">
-                        해당 브라우저는 비디오 태그를 지원하지 않습니다.
                     </video>
                 </div>
             </div>
         </section>
-
     </main>
 
     <script>
-        // 스크롤 시 섹션 페이드인 인터랙션
         const observerOptions = { threshold: 0.2 };
+        const bgText = document.getElementById('bg-text');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    const letter = entry.target.getAttribute('data-letter');
+                    if (letter) bgText.innerText = letter;
                 }
             });
         }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
     </script>
 </body>
 </html>

@@ -1,25 +1,50 @@
-/* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    background-color: #1a1a1a; /* 어두운 배경 */
-    color: #eeeeee; /* 밝은 글씨 */
-    font-family: 'Pretendard', sans-serif;
-    line-height: 1.7;
-    word-break: keep-all;
+:root {
+    --point: #ec6d56;
+    --bg: #0b0b0b;
+    --card-bg: #151515;
+    --text-main: #ffffff;
+    --text-dim: #999;
 }
 
-/* Layout */
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.fixed-bg-text {
+    color: rgba(255, 255, 255, 0.02); /* 아주 은은하게, 조명을 비춘 듯하게 */
+    mix-blend-mode: overlay;         /* 배경과 유기적으로 섞임 */
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 이미지 호버 시 붉은 레이저 스캔 인터랙션 추가 */
+.image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -100%; left: 0; width: 100%; height: 2px;
+    background: var(--point);
+    box-shadow: 0 0 15px var(--point);
+    transition: all 0.5s;
+}
+
+.image-placeholder:hover::after {
+    top: 100%; /* 마우스를 올리면 위에서 아래로 스캔 라인이 훑고 지나감 */
+}
+
 .content-wrapper {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 20px;
+    padding: 15vh 20px;
 }
 
 section {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-    border-bottom: 1px solid #333; /* 섹션 구분선 */
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid #222;
 }
 
 section.visible {
@@ -27,92 +52,104 @@ section.visible {
     transform: translateY(0);
 }
 
-/* Typography */
-.project-title { font-size: 3rem; font-weight: 700; margin-bottom: 2rem; color: #fff; }
-.book-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 1.5rem; }
-.step-label { 
-    font-size: 0.9rem; 
-    font-weight: 800; 
-    color: #ec6d56; /* 요청하신 포인트 컬러 */
-    display: block; 
-    margin-bottom: 10px; 
-    letter-spacing: 0.1em;
-}
-.description-text { font-size: 1.1rem; max-width: 800px; color: #bbb; }
-
-/* Grid & Visuals */
+/* 컨텐츠 레이아웃: 비대칭 그리드 */
 .display-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    grid-template-columns: 1fr 1.5fr; /* 텍스트는 좁게, 이미지는 넓게 비대칭 배치 */
+    gap: 100px;
+    align-items: start;
+    margin-bottom: 150px;
 }
 
-.display-grid.reverse .image-area { order: 2; }
-.display-grid.reverse .text-area { order: 1; }
+/* 텍스트 영역을 고정(Sticky)시켜서 이미지를 넘길 때 설명이 계속 보이게 함 */
+.text-area {
+    position: sticky;
+    top: 150px;
+    padding-right: 40px;
+    border-right: 1px solid var(--point); /* 포인트 컬러 가이드선 추가 */
+}
 
-/* 이미지 크기 최적화: 높이 기준 정렬 */
-.image-area {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+/* 타이포그래피 위계 */
+.project-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 40px;
+    letter-spacing: -0.04em;
+}
+
+.step-label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--point);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.book-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.text-area p {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    text-align: justify;
+    word-break: keep-all;
+    max-width: 800px;
 }
 
 .image-placeholder {
     width: 100%;
-    max-height: 500px; /* 최대 높이 지정 */
-    overflow: hidden;
-    background-color: #252525;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 850px; /* 분석하기에 가장 적절한 크기로 제한 */
+    margin: 0 auto;   /* 중앙 정렬로 여백 확보 */
+    padding: 60px;    /* 이미지 주변에 숨구멍(Frame) 생성 */
+    background-color: #111; /* 작품처럼 보이게 하는 어두운 배경 프레임 */
+    border: 1px solid #222;
 }
 
 .image-placeholder img {
-    width: auto;
+    width: 100%;      /* 프레임 안에서만 꽉 차게 */
     height: auto;
-    max-width: 100%;
-    max-height: 500px; /* 너비와 높이 중 큰 쪽을 기준으로 맞춤 */
-    object-fit: contain; /* 이미지 비율 보존 */
-    display: block;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.9); /* 바닥에서 떠 있는 듯한 입체감 */
 }
 
-/* 여러 이미지가 나열되는 경우를 위한 그리드 (D Book 등) */
 .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    display: flex;       /* 그리드 대신 플렉스로 유연하게 */
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 30px auto;
 }
 
 .image-gallery .image-placeholder {
-    max-height: 300px;
+    flex: 1 1 300px;     /* 최소 크기를 유지하며 나열 */
+    max-height: 350px;   /* 높이를 제한하여 리듬감 조절 */
+    padding: 30px;
 }
 
+.count-2 { grid-template-columns: 1fr 1fr; }
+.image-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* 비디오 컨테이너 */
 .video-container {
     width: 100%;
-    margin-top: 40px;
-    background-color: #000;
-    overflow: hidden;
-    border-radius: 4px; /* 선택 사항: 부드러운 모서리 */
+    background: #000;
+    margin-top: 30px;
 }
 
 .archive-video {
     width: 100%;
-    display: block;
-    aspect-ratio: 16 / 9; /* 영상 비율에 맞춰 조정 */
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .display-grid, .display-grid.reverse { 
-        grid-template-columns: 1fr; 
-        gap: 40px; 
-    }
-    .display-grid.reverse .image-area { order: 1; }
-    .display-grid.reverse .text-area { order: 2; }
-    .project-title { font-size: 2.2rem; }
+    .project-title { font-size: 2.5rem; }
+    .count-2 { grid-template-columns: 1fr; }
 }
